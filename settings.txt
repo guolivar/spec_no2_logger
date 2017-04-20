@@ -1,0 +1,7 @@
+/dev/ttyUSB0
+./
+local,0
+## Only the first lines are processed.
+1 <SERIAL PORT ADDRESS>
+2 <DATA SAVE PATH>
+3 <local/db selector>,<compress data? 1=='yes'>
