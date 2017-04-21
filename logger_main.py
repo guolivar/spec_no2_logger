@@ -24,6 +24,7 @@ datapath = settings_file.readline().rstrip('\n')
 print(datapath)
 prev_file_name = datapath + time.strftime("%Y%m%d.txt", rec_time)
 flags = settings_file.readline().rstrip().split(',')
+print(flags[0])
 # Close the settings file
 settings_file.close()
 
@@ -62,18 +63,18 @@ while True:
     # Make the line pretty for the file
     # If it has been within 1 hour of the start, flag the data by adding X to
     # serialn
-        if ((rec_time_s - start_time) < 3600):
-            file_line = timestamp + ', X' + line
-        else
-            if (flags[0] == 'clean'):
-                ser.write('g')
-                ser.write('Z')
-                ser.write('12345\r')
-                # Wait 2 seconds for the setting to be active
-                time.sleep(2)
-                # clear the serial buffer
-                ser.flushInput()
-            file_line = timestamp + ',' + line
+    if ((rec_time_s - start_time) < 3600):
+        file_line = timestamp + ', X' + line
+    else:
+        if (flags[0] == 'clean'):
+            ser.write('g')
+            ser.write('Z')
+            ser.write('12345\r')
+            # Wait 2 seconds for the setting to be active
+            time.sleep(2)
+            # clear the serial buffer
+            ser.flushInput()
+        file_line = timestamp + ',' + line
     print(file_line)
     # Save it to the appropriate file
     current_file_name = datapath + time.strftime("%Y%m%d.txt", rec_time)
