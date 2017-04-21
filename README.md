@@ -17,7 +17,9 @@ local,0
 ## Only the first lines are processed.
 1 <SERIAL PORT ADDRESS>
 2 <DATA SAVE PATH>
-3 <local/database selector>,<compress data? 1=='yes'>
+3 <local/clean selector>,<compress data? 1=='yes'>
+local : Ambient exposure and data saved locally (default)
+clean : Exposure to CLEAN air (zero). Data saved locally.
 ```
 
 There is one script to run:
