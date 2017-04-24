@@ -1,11 +1,12 @@
 # CPEC NO2 digital logger
 Python utility to read the output from a SPEC DGS-NO2-968-037 digital NO2 sensor.
 
-The script requests data from the sensor every 1 second (see the code to add a delay for less frequent sampling), timestamps it and saves it to a file.
+The script requests data from the sensor every X seconds (see the code to set the frequency), timestamps it and saves it to a file. If required, it sends the NO2 and Temperature data to Thingspeak.
 
 ## Modules required
 * **pyserial**
 * **time**
+* **requests**
 
 ## Usage
 The settings are specified in the ```settings.txt``` file which should look like:
@@ -21,7 +22,7 @@ WWWWWWWWWWWWWWWW
 ## Only the first lines are processed.
 1 <SERIAL PORT ADDRESS>
 2 <DATA SAVE PATH>
-3 <local/clean selector>,<compress data? 1=='yes'>
+3 <local/online/clean selector>,<compress data? 1=='yes'>
 4 <Thingspeak update address>
 5 <Thingspeak channel id>
 6 <Thingspeak readkey>
