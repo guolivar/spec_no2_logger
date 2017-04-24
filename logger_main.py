@@ -103,13 +103,13 @@ while True:
     line = ""
     bline = bytearray()
     ## Push data to thingspeak if required
-	if flags[0] == 'online':
-		# Is it the top of the minute?
-		if rec_time[4] != prev_minute:
-			prev_minute = rec_time[4]
-			# YES! --> Update the Thinkgspeak channel
-			# Average for the minute with what we have
-			min_no2 = min_no2 / n_samples
+    if flags[0] == 'online':
+        # Is it the top of the minute?
+        if rec_time[4] != prev_minute:
+            prev_minute = rec_time[4]
+            # YES! --> Update the Thinkgspeak channel
+            # Average for the minute with what we have
+            min_no2 = min_no2 / n_samples
             min_temp = min_temp / n_samples
             # Update thingspeak channel
             options = {'api_key':writekey,'field1':no2,'field2':temp}
