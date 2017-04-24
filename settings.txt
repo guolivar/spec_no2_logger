@@ -1,7 +1,15 @@
 /dev/ttyUSB0
 ./
-local,0
+online,0
+http://api.thingspeak.com/update
+00000000
+RRRRRRRRRRRRRRRR
+WWWWWWWWWWWWWWWW
 ## Only the first lines are processed.
 1 <SERIAL PORT ADDRESS>
 2 <DATA SAVE PATH>
-3 <local/clean selector>,<compress data? 1=='yes'>
+3 <local/online/clean selector>,<compress data? 1=='yes'>
+4 <Thingspeak update address>
+5 <Thingspeak channel id>
+6 <Thingspeak readkey>
+7 <Thingspeak writekey>

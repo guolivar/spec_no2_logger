@@ -14,15 +14,33 @@ The settings are specified in the ```settings.txt``` file which should look like
 /dev/ttyUSB0
 ./
 local,0
+http://api.thingspeak.com/update
+00000000
+RRRRRRRRRRRRRRRR
+WWWWWWWWWWWWWWWW
 ## Only the first lines are processed.
 1 <SERIAL PORT ADDRESS>
 2 <DATA SAVE PATH>
 3 <local/clean selector>,<compress data? 1=='yes'>
-local : Ambient exposure and data saved locally (default)
-clean : Exposure to CLEAN air (zero). Data saved locally.
+4 <Thingspeak update address>
+5 <Thingspeak channel id>
+6 <Thingspeak readkey>
+7 <Thingspeak writekey>
 ```
 
 There is one script to run:
-* ```logger_main.py```. This is the main logging script and the one that interacts directly with the sensor. It must be run manually (or started at boot) and it will continue to run until stopped by ```^C```. The outputs from this script are one datafile named ```YYYYMMDD.txt``` with the 1 second data.
+* ```logger_main.py```. This is the main logging script and the one that interacts directly with the sensor. It must be run manually (or started at boot) and it will continue to run until stopped by ```^C```. The outputs from this script are on a datafile named ```YYYYMMDD.txt```.
 
-For further details contact Gustavo Olivares (gustavo.olivares@niwa.co.nz)
+You can create a shell script to run this at boot time (through cron or .profile):
+```
+#!/bin/bash
+cd <PATH_TO_logger_main.py>
+./logger_main.py
+```
+The ```settings.txt``` file location is the same folder where the main script is and therefore it is needed to change the working directory to that path before running the script.
+
+For further details contact Gustavo Olivares (gustavo.olivares_AT_niwa.co.nz)
+
+## License
+MIT
+See ```LICENSE.md``` for the full text.
