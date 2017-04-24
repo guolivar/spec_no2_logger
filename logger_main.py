@@ -30,13 +30,13 @@ flags = settings_file.readline().rstrip().split(',')
 print(flags[0])
 
 # Thingspeak address
-thingspk = settings_file.readline().rstrip('\n').split(',')
+thingspk = settings_file.readline().rstrip('\n')
 # Thingspeak channel
-channel = settings_file.readline().rstrip('\n').split(',')
+channel = settings_file.readline().rstrip('\n')
 # Thinkgspeak readkey
-readkey = settings_file.readline().rstrip('\n').split(',')
+readkey = settings_file.readline().rstrip('\n')
 # Thinkgspeak writekey
-writekey = settings_file.readline().rstrip('\n').split(',')
+writekey = settings_file.readline().rstrip('\n')
 
 # Close the settings file
 settings_file.close()
