@@ -15,6 +15,8 @@ prev_minute = rec_time[4]
 # Set the minute averaging variables
 min_no2 = 0
 min_temp = 0
+min_rawno2 = 0
+min_rawtemp = 0
 n_samples = 0
 # Read the settings from the settings file
 settings_file = open("./settings.txt")
@@ -93,6 +95,8 @@ while True:
     if flags[0]=='online':
         min_no2 = min_no2 + eval(sep_line[1])
         min_temp = min_temp + eval(sep_line[2])
+        min_rawno2 = min_rawno2 + eval(sep_line[4])
+        min_rawtemp = min_rawtemp + eval(sep_line[5])
         n_samples = n_samples + 1
     # Save it to the appropriate file
     current_file_name = datapath + time.strftime("%Y%m%d.txt", rec_time)
@@ -111,11 +115,15 @@ while True:
             # Average for the minute with what we have
             min_no2 = min_no2 / n_samples
             min_temp = min_temp / n_samples
+            min_rawno2 = min_rawno2 / n_samples
+            min_rawtemp = min_rawtemp / n_samples
             # Update thingspeak channel
-            options = {'api_key':writekey,'field1':min_no2,'field2':min_temp}
+            options = {'api_key':writekey,'field1':min_no2,'field2':min_temp, 'field3':min_rawno2, 'field4':min_temp}
             req = requests.post(thingspk,data=options)
             min_no2 = 0
             min_temp = 0
+            min_rawno2 = 0
+            min_rawtemp = 0
             n_samples = 0
     # Compress data if required
     # Is it the last minute of the day?
